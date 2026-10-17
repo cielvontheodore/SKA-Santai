@@ -13,6 +13,7 @@
             <a href="{{ route('admin.gallery.index') }}">Gallery</a>
             <a href="{{ route('admin.news.index') }}">News</a>
             <a href="{{ route('admin.product.index') }}">Product</a>
+            <a href="{{ route('admin.contact.index') }}">Contact</a>
             <form action="{{ route('logout') }}" method="POST">
                 @csrf
                 <button type="submit">Log Out</button>
