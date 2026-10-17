@@ -11,6 +11,7 @@
         <nav>
             <a href="{{ route('admin.dashboard') }}">Dashboard</a>
             <a href="{{ route('admin.gallery.index') }}">Gallery</a>
+            <a href="{{ route('admin.news.index') }}">News</a>
             <form action="{{ route('logout') }}" method="POST">
                 @csrf
                 <button type="submit">Log Out</button>
