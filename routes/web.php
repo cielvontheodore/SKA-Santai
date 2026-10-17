@@ -36,7 +36,14 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 */
 Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', function () {
-        return view('admin.dashboard');
+        return view('admin.dashboard', [
+            'counts' => [
+                'gallery' => \App\Models\Gallery::count(),
+                'news' => \App\Models\News::count(),
+                'product' => \App\Models\Product::count(),
+                'contact' => \App\Models\Contact::count(),
+            ],
+        ]);
     })->name('dashboard');
 
     Route::resource('gallery', GalleryController::class)->names('gallery');
