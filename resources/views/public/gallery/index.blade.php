@@ -3,18 +3,20 @@
 @section('title', 'Gallery')
 
 @section('content')
-    <div class="container py-4 py-lg-5">
-        @include('public.partials.page-banner', [
-            'icon' => 'images',
-            'label' => 'Gallery',
-            'title' => 'Gallery',
-            'subtitle' => 'Dokumentasi kegiatan dan karya kami.',
-        ])
+    @include('public.partials.page-hero', [
+        'icon' => 'images',
+        'label' => 'Dokumentasi',
+        'title' => 'Galeri Kegiatan',
+        'subtitle' => 'Dokumentasi kegiatan dan karya kami.',
+    ])
 
-        @include('public.partials.post-grid', [
-            'items' => $galleries,
-            'showRoute' => 'gallery.show',
-            'empty' => 'Belum ada foto gallery.',
-        ])
-    </div>
+    <section class="section">
+        <div class="container">
+            @include('public.partials.post-grid', [
+                'items' => $galleries,
+                'showRoute' => 'gallery.show',
+                'empty' => 'Belum ada foto gallery.',
+            ])
+        </div>
+    </section>
 @endsection

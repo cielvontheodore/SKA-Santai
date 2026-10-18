@@ -13,7 +13,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('welcome');
+        return view('welcome', [
+            'products' => Product::latest()->take(3)->get(),
+            'galleries' => Gallery::latest()->take(6)->get(),
+            'news' => News::latest()->take(3)->get(),
+        ]);
     }
 
     /**

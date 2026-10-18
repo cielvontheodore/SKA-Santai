@@ -70,23 +70,24 @@
             font-weight: 600;
         }
 
-        /* Hero */
-        .hero {
+        /* Hero / brand band */
+        .band-brand {
+            position: relative;
+            overflow: hidden;
             background: linear-gradient(135deg, var(--ska-blue-dark), var(--ska-blue));
             color: #fff;
-            border-radius: 1.5rem;
         }
-        .badge-soft {
-            background: rgba(255, 255, 255, .15);
-            color: #fff;
-            font-weight: 600;
+        .hero-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(70px);
+            pointer-events: none;
         }
-
-        /* Page banner (inner pages) */
-        .page-banner {
-            background: linear-gradient(135deg, var(--ska-blue-dark), var(--ska-blue));
-            color: #fff;
+        .glass-card {
+            background: rgba(255, 255, 255, .10);
+            border: 1px solid rgba(255, 255, 255, .18);
             border-radius: 1.25rem;
+            backdrop-filter: blur(8px);
         }
 
         /* Cards */
@@ -170,6 +171,48 @@
             font-weight: 800;
             letter-spacing: -.02em;
         }
+        .eyebrow {
+            text-transform: uppercase;
+            letter-spacing: .12em;
+            font-size: .75rem;
+            font-weight: 700;
+            color: var(--ska-blue);
+        }
+        .section-alt {
+            background: #f4f7ff;
+        }
+        .section {
+            padding: 4.5rem 0;
+        }
+        .section-sm {
+            padding: 3rem 0;
+        }
+        .eyebrow-light {
+            text-transform: uppercase;
+            letter-spacing: .12em;
+            font-size: .75rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, .85);
+        }
+        .feature-icon,
+        .feature-icon-light {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: .85rem;
+            flex: 0 0 auto;
+            font-size: 1.15rem;
+        }
+        .feature-icon {
+            background: var(--ska-blue-50);
+            color: var(--ska-blue);
+        }
+        .feature-icon-light {
+            background: rgba(255, 255, 255, .15);
+            color: #fff;
+        }
         .text-muted {
             color: #64748b !important;
         }
@@ -215,11 +258,6 @@
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}" href="{{ route('contact') }}">Contact</a>
                     </li>
-                    <li class="nav-item ms-lg-2">
-                        <a class="btn btn-brand btn-sm px-3" href="{{ route('login') }}">
-                            <i class="bi bi-box-arrow-in-right me-1"></i>Login Admin
-                        </a>
-                    </li>
                 </ul>
             </div>
         </div>
@@ -230,7 +268,6 @@
     <footer class="border-top mt-5 py-4">
         <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2 text-muted small">
             <span>&copy; {{ date('Y') }} {{ config('app.name') }}. Solusi software untuk bisnis Anda.</span>
-            <a href="{{ route('login') }}">Admin Panel</a>
         </div>
     </footer>
 
