@@ -22,7 +22,7 @@
                                 <span class="feature-icon"><i class="bi bi-geo-alt"></i></span>
                                 <div>
                                     <div class="fw-semibold small">Alamat</div>
-                                    <div class="text-muted small">Jl. Contoh No. 123, Jakarta, Indonesia</div>
+                                    <div class="text-muted small">Jl. Jend. Sudirman No. 25, Jakarta Selatan, Indonesia</div>
                                 </div>
                             </div>
 
@@ -30,7 +30,7 @@
                                 <span class="feature-icon"><i class="bi bi-envelope"></i></span>
                                 <div>
                                     <div class="fw-semibold small">Email</div>
-                                    <div class="text-muted small">halo@solusikoneksianda.co.id</div>
+                                    <div class="text-muted small">solusikoneksianda@gmail.com</div>
                                 </div>
                             </div>
 
@@ -38,7 +38,7 @@
                                 <span class="feature-icon"><i class="bi bi-telephone"></i></span>
                                 <div>
                                     <div class="fw-semibold small">Telepon</div>
-                                    <div class="text-muted small">+62 812 3456 7890</div>
+                                    <div class="text-muted small">+62 895 3723 42535</div>
                                 </div>
                             </div>
                         </div>
