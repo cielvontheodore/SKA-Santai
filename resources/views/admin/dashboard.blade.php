@@ -5,7 +5,7 @@
 @section('content')
     <div class="mb-4">
         <h1 class="h3 page-title mb-1">Dashboard</h1>
-        <p class="text-muted mb-0">Selamat datang kembali, {{ auth()->user()->name }}.</p>
+        <p class="text-muted mb-0">Selamat datang kembali, {{ auth()->user()?->name ?? 'Admin' }}.</p>
     </div>
 
     @php

@@ -50,7 +50,15 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 | Admin
 |--------------------------------------------------------------------------
 */
-Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
+/*
+| TEMPORARY (design preview): saat APP_ENV=local, middleware auth dimatikan
+| supaya halaman admin bisa di-scrape alat desain (Figma) tanpa login.
+| Di environment lain (production, testing) `auth` tetap aktif.
+| Kalau sudah selesai, kembalikan ke: Route::middleware('auth')
+*/
+$adminMiddleware = app()->environment('local') ? [] : ['auth'];
+
+Route::middleware($adminMiddleware)->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', function () {
         return view('admin.dashboard', [
             'counts' => [
