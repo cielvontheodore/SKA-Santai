@@ -76,7 +76,7 @@ class ContactController extends Controller
     {
         Contact::create($request->validate($this->rules()));
 
-        return redirect('/')->with('contact_success', 'Pesan berhasil dikirim!');
+        return redirect()->route('contact')->with('contact_success', 'Pesan berhasil dikirim!');
     }
 
     /**

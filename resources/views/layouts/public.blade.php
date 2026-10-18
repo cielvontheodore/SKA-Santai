@@ -54,6 +54,21 @@
             text-transform: uppercase;
             color: #64748b;
         }
+        .pub-navbar .nav-link {
+            color: #334155;
+            font-weight: 500;
+            border-radius: .6rem;
+            padding: .45rem .85rem;
+        }
+        .pub-navbar .nav-link:hover {
+            color: var(--ska-blue);
+            background: var(--ska-blue-50);
+        }
+        .pub-navbar .nav-link.active {
+            color: var(--ska-blue-darker);
+            background: var(--ska-blue-50);
+            font-weight: 600;
+        }
 
         /* Hero */
         .hero {
@@ -61,10 +76,17 @@
             color: #fff;
             border-radius: 1.5rem;
         }
-        .hero .badge-soft {
+        .badge-soft {
             background: rgba(255, 255, 255, .15);
             color: #fff;
             font-weight: 600;
+        }
+
+        /* Page banner (inner pages) */
+        .page-banner {
+            background: linear-gradient(135deg, var(--ska-blue-dark), var(--ska-blue));
+            color: #fff;
+            border-radius: 1.25rem;
         }
 
         /* Cards */
@@ -72,6 +94,25 @@
             border: 0;
             border-radius: 1rem;
             box-shadow: 0 1px 2px rgba(15, 23, 42, .06), 0 12px 32px -18px rgba(37, 99, 235, .45);
+        }
+        .media-card {
+            transition: transform .18s ease, box-shadow .18s ease;
+            overflow: hidden;
+        }
+        .media-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 1px 2px rgba(15, 23, 42, .06), 0 22px 44px -20px rgba(37, 99, 235, .55);
+        }
+        .media-card img {
+            transition: transform .4s ease;
+        }
+        .media-card:hover img {
+            transform: scale(1.04);
+        }
+        .thumb-cover {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         /* Buttons */
@@ -86,6 +127,13 @@
             background: var(--ska-blue-darker);
             border-color: var(--ska-blue-darker);
             color: #fff;
+        }
+        .btn-outline-primary {
+            --bs-btn-color: var(--ska-blue);
+            --bs-btn-border-color: var(--ska-blue-100);
+            --bs-btn-hover-bg: var(--ska-blue);
+            --bs-btn-hover-border-color: var(--ska-blue);
+            font-weight: 600;
         }
         .btn-light-brand {
             background: #fff;
@@ -117,6 +165,14 @@
             border-radius: .85rem;
         }
 
+        /* Misc */
+        .section-title {
+            font-weight: 800;
+            letter-spacing: -.02em;
+        }
+        .text-muted {
+            color: #64748b !important;
+        }
         footer a {
             color: var(--ska-blue);
             text-decoration: none;
@@ -142,7 +198,22 @@
             <div class="collapse navbar-collapse" id="pubNavbar">
                 <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
                     <li class="nav-item">
-                        <a class="nav-link" href="#kontak"><i class="bi bi-envelope me-1"></i>Kontak</a>
+                        <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}">Beranda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('profile') ? 'active' : '' }}" href="{{ route('profile') }}">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('gallery.*') ? 'active' : '' }}" href="{{ route('gallery.index') }}">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('news.*') ? 'active' : '' }}" href="{{ route('news.index') }}">News</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('product.*') ? 'active' : '' }}" href="{{ route('product.index') }}">Product</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}" href="{{ route('contact') }}">Contact</a>
                     </li>
                     <li class="nav-item ms-lg-2">
                         <a class="btn btn-brand btn-sm px-3" href="{{ route('login') }}">

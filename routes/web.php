@@ -3,13 +3,29 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+/*
+|--------------------------------------------------------------------------
+| Public site
+|--------------------------------------------------------------------------
+*/
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/profile', [HomeController::class, 'profile'])->name('profile');
+
+Route::get('/gallery', [HomeController::class, 'galleryIndex'])->name('gallery.index');
+Route::get('/gallery/{gallery}', [HomeController::class, 'galleryShow'])->name('gallery.show');
+
+Route::get('/news', [HomeController::class, 'newsIndex'])->name('news.index');
+Route::get('/news/{news}', [HomeController::class, 'newsShow'])->name('news.show');
+
+Route::get('/product', [HomeController::class, 'productIndex'])->name('product.index');
+Route::get('/product/{product}', [HomeController::class, 'productShow'])->name('product.show');
+
+Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 
 /*
 |--------------------------------------------------------------------------
