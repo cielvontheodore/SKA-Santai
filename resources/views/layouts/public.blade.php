@@ -230,7 +230,6 @@
                 <span class="brand-mark"><i class="bi bi-hexagon-fill fs-5"></i></span>
                 <span class="d-flex flex-column">
                     <span class="brand-name">{{ config('app.name') }}</span>
-                    <span class="brand-sub">Software House</span>
                 </span>
             </a>
 

@@ -1,59 +1,215 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# PT Solusi Koneksi Anda — Company Profile
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Company profile website for **PT Solusi Koneksi Anda**, a software house providing
+connectivity, IT infrastructure, and software development services.
 
-## About Laravel
+The project has two sides:
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- **Public site** — landing page, company profile, gallery, news/articles, products, and a contact form.
+- **Admin panel** — simple login and CRUD for gallery, news, products, and incoming contact messages.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Built with **Laravel 12** and **Bootstrap 5** (served from CDN, no build step).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Features
 
-## Learning Laravel
+**Public**
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+- Landing page with hero, about, services, latest articles, gallery preview, and a call to action.
+- Company profile page.
+- Gallery and news listings with detail pages.
+- Product listing with detail pages and a "chat via WhatsApp" button.
+- Contact form, rate limited to **5 submissions per minute** per visitor.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+**Admin** (`/admin`, requires login)
 
-## Laravel Sponsors
+- Dashboard with content counters.
+- Create / read / update / delete for **Gallery**, **News**, **Product**, and **Contact** messages.
+- Image uploads (stored on the `public` disk).
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+The UI is blue-and-white only, uses the *Plus Jakarta Sans* font, and ships with a
+small internal design system (`.section`, `.band-brand`, `.glass-card`, `.eyebrow`, …)
+so every page looks consistent. **No Tailwind, no Vite, no `npm run build`** needed.
 
-### Premium Partners
+## Tech stack
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+| Layer     | Choice                                                    |
+| --------- | --------------------------------------------------------- |
+| Backend   | PHP 8.2+ , Laravel 12                                      |
+| Database  | MySQL (SQLite also works)                                  |
+| Frontend  | Bootstrap 5.3 + Bootstrap Icons + Plus Jakarta Sans (CDN)  |
+| Styling   | Inline `<style>` blocks inside the Blade layouts           |
+| Assets    | No bundler (Vite/npm are not used by the views)            |
 
-## Contributing
+## Requirements
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- PHP **8.2 or newer** with the usual Laravel extensions (`mbstring`, `openssl`, `pdo`, `tokenizer`, `xml`, `ctype`, `json`, `bcmath`, `fileinfo`).
+- Composer 2
+- MySQL 5.7+ / 8.x, or SQLite
 
-## Code of Conduct
+> `GD` / `Imagick` are **not** required.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Installation
 
-## Security Vulnerabilities
+```bash
+# 1. Get the code
+git clone <repository-url> ska-santai
+cd ska-santai
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+# 2. Install PHP dependencies
+composer install
+
+# 3. Create the environment file and app key
+cp .env.example .env
+php artisan key:generate
+```
+
+Configure the database in `.env`:
+
+```dotenv
+APP_NAME="PT Solusi Koneksi Anda"
+APP_URL=http://localhost
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=SKASantai
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+Then run the migrations, symlink storage, and start the server:
+
+```bash
+php artisan migrate --seed
+php artisan storage:link
+php artisan serve
+```
+
+The site is now available at <http://localhost:8000>.
+
+### Fresh install
+
+To wipe everything and recreate the database with sample content:
+
+```bash
+php artisan migrate:fresh --seed
+```
+
+This drops all tables, re-runs every migration, and then runs `DatabaseSeeder`
+(admin user + sample content).
+
+## Default admin account
+
+| Field    | Value                 |
+| -------- | --------------------- |
+| Login    | `/login`              |
+| Email    | `admin@example.com`   |
+| Password | `password`            |
+
+> Change the credentials after your first login, or edit
+> `database/seeders/DatabaseSeeder.php` before seeding.
+
+## Sample content
+
+`database/seeders/SampleContentSeeder.php` fills the site with 6 products,
+4 articles, and 6 gallery photos. It also copies the bundled demo images from
+`database/seeders/images/` into `storage/app/public/` the first time it runs,
+so the content shows up without any manual upload.
+
+Run it on its own:
+
+```bash
+php artisan db:seed --class=SampleContentSeeder
+```
+
+The seeder matches records by title, so it is **safe to run multiple times** —
+it will not create duplicates. To use your own images, replace the files in
+`database/seeders/images/`, delete the matching files under
+`storage/app/public/`, and seed again.
+
+The bundled demo photos come from [Pexels](https://www.pexels.com) and are used
+under the [Pexels License](https://www.pexels.com/license/) (free for commercial
+use, no attribution required).
+
+## Routes
+
+**Public**
+
+| Method | URL                 | Name            |
+| ------ | ------------------- | --------------- |
+| GET    | `/`                 | `home`          |
+| GET    | `/profile`          | `profile`       |
+| GET    | `/gallery`          | `gallery.index` |
+| GET    | `/gallery/{gallery}`| `gallery.show`  |
+| GET    | `/news`             | `news.index`    |
+| GET    | `/news/{news}`      | `news.show`     |
+| GET    | `/product`          | `product.index` |
+| GET    | `/product/{product}`| `product.show`  |
+| GET    | `/contact`          | `contact`       |
+| POST   | `/contact`          | `contact.store` |
+
+**Authentication**
+
+| Method | URL       | Name     |
+| ------ | --------- | -------- |
+| GET    | `/login`  | `login`  |
+| POST   | `/login`  | —        |
+| POST   | `/logout` | `logout` |
+
+**Admin** (middleware `auth`, prefix `/admin`, name prefix `admin.`)
+
+| Method           | URL                  | Name                  |
+| ---------------- | -------------------- | --------------------- |
+| GET              | `/admin`             | `admin.dashboard`     |
+| resource         | `/admin/gallery`     | `admin.gallery.*`     |
+| resource         | `/admin/news`        | `admin.news.*`        |
+| resource         | `/admin/product`     | `admin.product.*`     |
+| resource         | `/admin/contact`     | `admin.contact.*`     |
+
+## Project structure
+
+```
+app/
+  Http/Controllers/        AuthController, HomeController (public),
+                           GalleryController, NewsController,
+                           ProductController, ContactController (admin CRUD)
+  Models/                  Gallery, News, Product, Contact, User
+database/
+  migrations/              galleries, news, products, contacts
+  seeders/
+    DatabaseSeeder.php     admin user + sample content
+    SampleContentSeeder.php
+    images/                bundled demo photos
+resources/views/
+  layouts/                 admin.blade.php, public.blade.php (CSS design system)
+  welcome.blade.php        public landing page
+  public/                  profile, gallery, news, product, contact + partials
+  admin/                   dashboard + CRUD views
+  auth/                    login
+routes/web.php             all routes
+```
+
+## Uploads
+
+Images uploaded from the admin panel are stored on the `public` disk, inside:
+
+- `storage/app/public/gallery/`
+- `storage/app/public/news/`
+- `storage/app/public/product/`
+
+Run `php artisan storage:link` once so they are reachable at `/storage/...`.
+Uploads are limited to **2 MB** and the formats `jpg`, `jpeg`, `png`, `webp`
+(plus `gif` / `svg` when creating a record).
+
+## Testing
+
+```bash
+php artisan test
+```
+
+Tests run against an in-memory SQLite database (configured in `phpunit.xml`),
+so they never touch your development data.
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Released under the [MIT License](LICENSE).
