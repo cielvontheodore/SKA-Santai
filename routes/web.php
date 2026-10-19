@@ -88,3 +88,33 @@ Route::middleware($adminMiddleware)->prefix('admin')->name('admin.')->group(func
     Route::resource('product', ProductController::class)->names('product');
     Route::resource('contact', ContactController::class)->names('contact');
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+// TODO
+// FAVICON
+// https://wa.me/62895372342535?text=halo%20saya%20butuh%20uang
+// udah sih itu aja harusnya
+
+
+
+
+
+
+
+
+
+
+
+
+
