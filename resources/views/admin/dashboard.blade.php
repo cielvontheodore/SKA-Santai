@@ -14,6 +14,7 @@
             ['route' => 'admin.news.index',    'icon' => 'newspaper',  'label' => 'News',    'desc' => 'Kelola berita dan artikel.',  'count' => $counts['news']],
             ['route' => 'admin.product.index', 'icon' => 'bag',        'label' => 'Product', 'desc' => 'Kelola produk dan harga.',    'count' => $counts['product']],
             ['route' => 'admin.contact.index', 'icon' => 'envelope',   'label' => 'Contact', 'desc' => 'Pesan masuk dari pengunjung.', 'count' => $counts['contact']],
+            ['route' => 'admin.profile.index', 'icon' => 'building',   'label' => 'Profile', 'desc' => 'Teks halaman profil perusahaan.', 'count' => $counts['profile']],
         ];
     @endphp
 

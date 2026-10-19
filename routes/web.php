@@ -6,6 +6,12 @@ use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
+use App\Models\Contact;
+use App\Models\Gallery;
+use App\Models\News;
+use App\Models\Product;
+use App\Models\Profile;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -56,13 +62,18 @@ Route::middleware($adminMiddleware)->prefix('admin')->name('admin.')->group(func
     Route::get('/', function () {
         return view('admin.dashboard', [
             'counts' => [
-                'gallery' => \App\Models\Gallery::count(),
-                'news' => \App\Models\News::count(),
-                'product' => \App\Models\Product::count(),
-                'contact' => \App\Models\Contact::count(),
+                'gallery' => Gallery::count(),
+                'news' => News::count(),
+                'product' => Product::count(),
+                'contact' => Contact::count(),
+                'profile' => Profile::count(),
             ],
         ]);
     })->name('dashboard');
+
+    Route::get('profile', [ProfileController::class, 'index'])->name('profile.index');
+    Route::get('profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('profile', [ProfileController::class, 'update'])->name('profile.update');
 
     Route::resource('gallery', GalleryController::class)->names('gallery');
     Route::resource('news', NewsController::class)->names('news');

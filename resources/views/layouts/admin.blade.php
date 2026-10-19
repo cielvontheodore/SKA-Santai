@@ -275,6 +275,9 @@
             <a class="sidebar-link {{ request()->routeIs('admin.contact.*') ? 'active' : '' }}" href="{{ route('admin.contact.index') }}">
                 <i class="bi bi-envelope"></i>Contact
             </a>
+            <a class="sidebar-link {{ request()->routeIs('admin.profile.*') ? 'active' : '' }}" href="{{ route('admin.profile.index') }}">
+                <i class="bi bi-building"></i>Profile
+            </a>
         </nav>
 
         <form action="{{ route('logout') }}" method="POST" class="mt-auto pt-3">
@@ -325,6 +328,11 @@
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('admin.contact.*') ? 'active' : '' }}" href="{{ route('admin.contact.index') }}">
                             <i class="bi bi-envelope me-1"></i>Contact
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('admin.profile.*') ? 'active' : '' }}" href="{{ route('admin.profile.index') }}">
+                            <i class="bi bi-building me-1"></i>Profile
                         </a>
                     </li>
                     <li class="nav-item ms-lg-3">

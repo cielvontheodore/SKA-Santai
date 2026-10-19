@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Gallery;
 use App\Models\News;
 use App\Models\Product;
+use App\Models\Profile;
 
 class HomeController extends Controller
 {
@@ -25,7 +26,9 @@ class HomeController extends Controller
      */
     public function profile()
     {
-        return view('public.profile.index');
+        return view('public.profile.index', [
+            'profile' => Profile::current(),
+        ]);
     }
 
     /**
@@ -34,11 +37,12 @@ class HomeController extends Controller
     public function galleryIndex()
     {
         $galleries = Gallery::latest()->get();
+
         return view('public.gallery.index', compact('galleries'));
     }
 
     /**
-     * public gallery 
+     * public gallery
      */
     public function galleryShow(Gallery $gallery)
     {
@@ -51,6 +55,7 @@ class HomeController extends Controller
     public function newsIndex()
     {
         $news = News::latest()->get();
+
         return view('public.news.index', compact('news'));
     }
 
@@ -68,6 +73,7 @@ class HomeController extends Controller
     public function productIndex()
     {
         $products = Product::latest()->get();
+
         return view('public.product.index', compact('products'));
     }
 
