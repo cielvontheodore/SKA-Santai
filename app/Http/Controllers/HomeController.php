@@ -9,7 +9,7 @@ use App\Models\Product;
 class HomeController extends Controller
 {
     /**
-     * Landing page.
+     * landing page final
      */
     public function index()
     {
@@ -21,7 +21,7 @@ class HomeController extends Controller
     }
 
     /**
-     * Company profile (about) page.
+     * cimpany profile
      */
     public function profile()
     {
@@ -29,7 +29,7 @@ class HomeController extends Controller
     }
 
     /**
-     * Public gallery listing.
+     * public gallery list min
      */
     public function galleryIndex()
     {
@@ -38,7 +38,7 @@ class HomeController extends Controller
     }
 
     /**
-     * Public gallery detail.
+     * public gallery 
      */
     public function galleryShow(Gallery $gallery)
     {
@@ -46,7 +46,7 @@ class HomeController extends Controller
     }
 
     /**
-     * Public news listing.
+     * public news index
      */
     public function newsIndex()
     {
@@ -55,7 +55,7 @@ class HomeController extends Controller
     }
 
     /**
-     * Public news detail.
+     * public news dedciated
      */
     public function newsShow(News $news)
     {
@@ -63,7 +63,7 @@ class HomeController extends Controller
     }
 
     /**
-     * Public product listing.
+     * public product index
      */
     public function productIndex()
     {
@@ -72,7 +72,7 @@ class HomeController extends Controller
     }
 
     /**
-     * Public product detail.
+     * public product dedicated
      */
     public function productShow(Product $product)
     {
@@ -80,7 +80,7 @@ class HomeController extends Controller
     }
 
     /**
-     * Public contact page.
+     * public contact page war is over
      */
     public function contact()
     {
