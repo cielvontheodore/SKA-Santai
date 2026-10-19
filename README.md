@@ -52,8 +52,8 @@ so every page looks consistent. **No Tailwind, no Vite, no `npm run build`** nee
 
 ```bash
 # 1. Get the code
-git clone <repository-url> ska-santai
-cd ska-santai
+git clone https://github.com/cielvontheodore/SKA-Santai
+cd SKA-Santai
 
 # 2. Install PHP dependencies
 composer install
