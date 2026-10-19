@@ -14,11 +14,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('welcome', [
-            'products' => Product::latest()->take(3)->get(),
-            'galleries' => Gallery::latest()->take(6)->get(),
-            'news' => News::latest()->take(3)->get(),
-        ]);
+        $profile = Profile::current();
+        $products = Product::latest()->take(3)->get();
+        $galleries = Gallery::latest()->take(6)->get();
+        $news = News::latest()->take(3)->get();
+
+        return view('welcome', compact('profile', 'products', 'galleries', 'news'));
     }
 
     /**
@@ -26,9 +27,9 @@ class HomeController extends Controller
      */
     public function profile()
     {
-        return view('public.profile.index', [
-            'profile' => Profile::current(),
-        ]);
+        $profile = Profile::current();
+
+        return view('public.profile.index', compact('profile'));
     }
 
     /**

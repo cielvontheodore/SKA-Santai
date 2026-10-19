@@ -74,12 +74,10 @@
         <div class="container">
             <div class="row align-items-center g-4 g-lg-5">
                 <div class="col-lg-6">
-                    <span class="eyebrow">Tentang Kami</span>
-                    <h2 class="section-title h2 mt-3 mb-3">PT Solusi Koneksi Anda</h2>
+                    <span class="eyebrow">{{ $profile->intro_eyebrow }}</span>
+                    <h2 class="section-title h2 mt-3 mb-3">{{ config('app.name') }}</h2>
                     <p class="text-muted mb-4">
-                        Kami adalah perusahaan yang bergerak di bidang solusi koneksi, infrastruktur teknologi, dan
-                        pengembangan perangkat lunak. Kami membantu bisnis membangun fondasi digital yang stabil,
-                        aman, dan siap berkembang.
+                        {{ $profile->intro_text_1 }}
                     </p>
                     <a href="{{ route('profile') }}" class="btn btn-outline-primary">
                         Selengkapnya tentang kami <i class="bi bi-arrow-right ms-1"></i>
@@ -92,8 +90,8 @@
                             <div class="card card-modern h-100">
                                 <div class="card-body p-4">
                                     <span class="feature-icon"><i class="bi bi-building"></i></span>
-                                    <p class="fs-3 fw-bold text-dark mt-3 mb-0">250+</p>
-                                    <p class="text-muted small mb-0">Klien dari berbagai sektor</p>
+                                    <p class="fs-3 fw-bold text-dark mt-3 mb-0">{{ $profile->fact_1_value }}</p>
+                                    <p class="text-muted small mb-0">{{ $profile->fact_1_label }}</p>
                                 </div>
                             </div>
                         </div>
@@ -101,8 +99,8 @@
                             <div class="card card-modern h-100">
                                 <div class="card-body p-4">
                                     <span class="feature-icon"><i class="bi bi-calendar3"></i></span>
-                                    <p class="fs-3 fw-bold text-dark mt-3 mb-0">2015</p>
-                                    <p class="text-muted small mb-0">Tahun mulai beroperasi</p>
+                                    <p class="fs-3 fw-bold text-dark mt-3 mb-0">{{ $profile->fact_2_value }}</p>
+                                    <p class="text-muted small mb-0">{{ $profile->fact_2_label }}</p>
                                 </div>
                             </div>
                         </div>
@@ -110,8 +108,8 @@
                             <div class="card card-modern h-100">
                                 <div class="card-body p-4">
                                     <span class="feature-icon"><i class="bi bi-headset"></i></span>
-                                    <p class="fs-3 fw-bold text-dark mt-3 mb-0">24/7</p>
-                                    <p class="text-muted small mb-0">Dukungan teknis</p>
+                                    <p class="fs-3 fw-bold text-dark mt-3 mb-0">{{ $profile->fact_3_value }}</p>
+                                    <p class="text-muted small mb-0">{{ $profile->fact_3_label }}</p>
                                 </div>
                             </div>
                         </div>
@@ -119,8 +117,8 @@
                             <div class="card card-modern h-100">
                                 <div class="card-body p-4">
                                     <span class="feature-icon"><i class="bi bi-shield-check"></i></span>
-                                    <p class="fs-3 fw-bold text-dark mt-3 mb-0">SLA</p>
-                                    <p class="text-muted small mb-0">Jaminan mutu layanan</p>
+                                    <p class="fs-3 fw-bold text-dark mt-3 mb-0">{{ $profile->fact_4_value }}</p>
+                                    <p class="text-muted small mb-0">{{ $profile->fact_4_label }}</p>
                                 </div>
                             </div>
                         </div>
@@ -214,14 +212,14 @@
         <div class="container">
             <div class="d-flex flex-wrap align-items-center justify-content-between gap-4">
                 <div>
-                    <h2 class="section-title h3 mb-2">Siap meningkatkan konektivitas bisnis Anda?</h2>
+                    <h2 class="section-title h3 mb-2">{{ $profile->cta_title }}</h2>
                     <p class="text-white-50 mb-0">
-                        Diskusikan kebutuhan jaringan dan infrastruktur perusahaan Anda bersama tim kami.
+                        {{ $profile->cta_subtitle }}
                     </p>
                 </div>
 
                 <a href="{{ route('contact') }}" class="btn btn-light-brand px-4 py-2">
-                    Hubungi Kami
+                    {{ $profile->cta_button_label }}
                 </a>
             </div>
         </div>
