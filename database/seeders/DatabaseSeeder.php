@@ -16,10 +16,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::firstOrCreate(
+        $admin = User::firstOrCreate(
             ['email' => 'admin@example.com'],
-            ['name' => 'Admin', 'password' => 'password'],
+            ['name' => 'Admin', 'password' => 'password', 'is_super_admin' => true],
         );
+
+        if (! $admin->is_super_admin) {
+            $admin->is_super_admin = true;
+            $admin->save();
+        }
 
         $this->call(SampleContentSeeder::class);
 

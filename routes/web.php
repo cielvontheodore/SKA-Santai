@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\GalleryController;
@@ -12,6 +13,7 @@ use App\Models\Gallery;
 use App\Models\News;
 use App\Models\Product;
 use App\Models\Profile;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -67,6 +69,7 @@ Route::middleware($adminMiddleware)->prefix('admin')->name('admin.')->group(func
                 'product' => Product::count(),
                 'contact' => Contact::count(),
                 'profile' => Profile::count(),
+                'admin' => User::count(),
             ],
         ]);
     })->name('dashboard');
@@ -74,6 +77,11 @@ Route::middleware($adminMiddleware)->prefix('admin')->name('admin.')->group(func
     Route::get('profile', [ProfileController::class, 'index'])->name('profile.index');
     Route::get('profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::put('profile', [ProfileController::class, 'update'])->name('profile.update');
+
+    // Admin CRUD is restricted to super admins.
+    Route::middleware('can:manage-admins')->group(function () {
+        Route::resource('admins', AdminController::class)->names('admins')->except('show');
+    });
 
     Route::resource('gallery', GalleryController::class)->names('gallery');
     Route::resource('news', NewsController::class)->names('news');

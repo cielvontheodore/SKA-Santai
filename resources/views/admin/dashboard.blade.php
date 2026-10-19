@@ -16,6 +16,10 @@
             ['route' => 'admin.contact.index', 'icon' => 'envelope',   'label' => 'Contact', 'desc' => 'Pesan masuk dari pengunjung.', 'count' => $counts['contact']],
             ['route' => 'admin.profile.index', 'icon' => 'building',   'label' => 'Profile', 'desc' => 'Teks halaman profil perusahaan.', 'count' => $counts['profile']],
         ];
+
+        if (auth()->user()?->isSuperAdmin()) {
+            $cards[] = ['route' => 'admin.admins.index', 'icon' => 'person-badge', 'label' => 'Admin', 'desc' => 'Kelola akun admin.', 'count' => $counts['admin']];
+        }
     @endphp
 
     <div class="row g-3 g-lg-4">

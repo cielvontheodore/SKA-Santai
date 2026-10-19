@@ -263,6 +263,11 @@
             <a class="sidebar-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}" href="{{ route('admin.dashboard') }}">
                 <i class="bi bi-speedometer2"></i>Dashboard
             </a>
+
+            <a class="sidebar-link {{ request()->routeIs('admin.profile.*') ? 'active' : '' }}" href="{{ route('admin.profile.index') }}">
+                <i class="bi bi-building"></i>Profile
+            </a>
+
             <a class="sidebar-link {{ request()->routeIs('admin.gallery.*') ? 'active' : '' }}" href="{{ route('admin.gallery.index') }}">
                 <i class="bi bi-images"></i>Gallery
             </a>
@@ -275,9 +280,12 @@
             <a class="sidebar-link {{ request()->routeIs('admin.contact.*') ? 'active' : '' }}" href="{{ route('admin.contact.index') }}">
                 <i class="bi bi-envelope"></i>Contact
             </a>
-            <a class="sidebar-link {{ request()->routeIs('admin.profile.*') ? 'active' : '' }}" href="{{ route('admin.profile.index') }}">
-                <i class="bi bi-building"></i>Profile
-            </a>
+       
+            @can('manage-admins')
+                <a class="sidebar-link {{ request()->routeIs('admin.admins.*') ? 'active' : '' }}" href="{{ route('admin.admins.index') }}">
+                    <i class="bi bi-person-badge"></i>Admin
+                </a>
+            @endcan
         </nav>
 
         <form action="{{ route('logout') }}" method="POST" class="mt-auto pt-3">
@@ -310,6 +318,13 @@
                             <i class="bi bi-speedometer2 me-1"></i>Dashboard
                         </a>
                     </li>
+
+                     <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('admin.profile.*') ? 'active' : '' }}" href="{{ route('admin.profile.index') }}">
+                            <i class="bi bi-building me-1"></i>Profile
+                        </a>
+                    </li>
+
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('admin.gallery.*') ? 'active' : '' }}" href="{{ route('admin.gallery.index') }}">
                             <i class="bi bi-images me-1"></i>Gallery
@@ -330,11 +345,14 @@
                             <i class="bi bi-envelope me-1"></i>Contact
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('admin.profile.*') ? 'active' : '' }}" href="{{ route('admin.profile.index') }}">
-                            <i class="bi bi-building me-1"></i>Profile
-                        </a>
-                    </li>
+                   
+                    @can('manage-admins')
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('admin.admins.*') ? 'active' : '' }}" href="{{ route('admin.admins.index') }}">
+                                <i class="bi bi-person-badge me-1"></i>Admin
+                            </a>
+                        </li>
+                    @endcan
                     <li class="nav-item ms-lg-3">
                         <form action="{{ route('logout') }}" method="POST" class="w-100">
                             @csrf
@@ -354,6 +372,14 @@
                 <div class="alert alert-brand alert-dismissible fade show d-flex align-items-center gap-2 shadow-sm mb-4" role="alert">
                     <i class="bi bi-check-circle-fill"></i>
                     <div class="fw-semibold">{{ session('success') }}</div>
+                    <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+
+            @if (session('error'))
+                <div class="alert alert-danger alert-dismissible fade show d-flex align-items-center gap-2 shadow-sm mb-4" role="alert">
+                    <i class="bi bi-exclamation-triangle-fill"></i>
+                    <div class="fw-semibold">{{ session('error') }}</div>
                     <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             @endif
