@@ -107,10 +107,6 @@
                                 <input type="password" name="password" id="password" class="form-control" placeholder="••••••••" required>
                             </div>
 
-                            <div class="form-check mb-4">
-                                <input type="checkbox" name="remember" id="remember" value="1" class="form-check-input">
-                                <label for="remember" class="form-check-label small">Remember Me</label>
-                            </div>
 
                             <button type="submit" class="btn btn-brand w-100 py-2">
                                 <i class="bi bi-box-arrow-in-right me-1"></i>Log In
