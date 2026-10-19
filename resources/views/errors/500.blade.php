@@ -1,6 +1,6 @@
 @extends('layouts.public')
 
-@section('title', '500 - Kesalahan Server')
+@section('title', '500')
 
 @section('content')
     @include('errors.partials.error-page', [

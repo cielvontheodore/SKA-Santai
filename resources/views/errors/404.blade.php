@@ -1,6 +1,6 @@
 @extends('layouts.public')
 
-@section('title', '404 - Halaman Tidak Ditemukan')
+@section('title', '404')
 
 @section('content')
     @include('errors.partials.error-page', [
