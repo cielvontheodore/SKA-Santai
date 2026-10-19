@@ -105,8 +105,8 @@ Route::middleware($adminMiddleware)->prefix('admin')->name('admin.')->group(func
 // FAVICON
 // https://wa.me/62895372342535?text=halo%20saya%20butuh%20uang
 // udah sih itu aja harusnya
-
-
+// hero_title = 'Profil Perusahaan' 
+// intro_title = 'Mitra teknologi untuk pertumbuhan bisnis Anda' 
 
 
 
